@@ -135,8 +135,8 @@ class Solution:
 if __name__ == '__main__':
     s = input('Your function: ')
     n = int(input('num of figures: '))
-    a = input('right border: ')
-    b = input('left border: ')
+    a = input('left border: ')
+    b = input('right border: ')
     solution = Solution(s, n, a, b)
     solution.trapezoidal()
     solution.simpson()
