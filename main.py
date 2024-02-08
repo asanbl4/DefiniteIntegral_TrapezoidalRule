@@ -38,7 +38,8 @@ class Solution:
             f = f.replace('^', ' ** ')
             self.function_for_derivative = self.function_for_derivative.replace('^', ' ** ')
         if 'np.e' not in f:
-            f = f.replace('e', 'np.e')
+            f = f.replace('e', f'{np.e}')
+            self.function_for_derivative = self.function_for_derivative.replace('e', f'{np.e}')
         if 'np.log2' not in f:
             f = f.replace('log2', 'np.log2')
         if 'np.log10' not in f:
