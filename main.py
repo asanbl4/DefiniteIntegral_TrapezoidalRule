@@ -5,13 +5,13 @@ from sympy import symbols, diff
 
 
 class Solution:
-    def __init__(self, s, n, a, b):
-        self.function = s
-        self.function_for_derivative = s
-        self.n = n
-        self.a = float(self.get_norm(a))
-        self.b = float(self.get_norm(b))
-        self.delta_x = (self.b - self.a) / n
+    def __init__(self, function, number_of_figures, left_border, right_border):
+        self.function = function
+        self.function_for_derivative = function
+        self.n = number_of_figures
+        self.a = float(self.get_norm(left_border))
+        self.b = float(self.get_norm(right_border))
+        self.delta_x = (self.b - self.a) / number_of_figures
         self.arguments = []
         r, l = self.a, self.b
         while r <= l:
@@ -19,7 +19,7 @@ class Solution:
             r += self.delta_x
         # print(self.arguments)
         self.values = []
-        self.function = self.to_program(s)
+        self.function = self.to_program(function)
 
     def get_norm(self, a):
         if 'pi' in a:
@@ -138,11 +138,7 @@ if __name__ == '__main__':
     n = int(input('num of figures: '))
     a = input('left border: ')
     b = input('right border: ')
-    solution = Solution(s, n, a, b)
+    solution = Solution(function=s, number_of_figures=n, left_border=a, right_border=b)
     solution.trapezoidal()
     solution.simpson()
     solution.integral()
-    # solution = Solution('x^2+1', 4, 1, 3)
-    # solution.trapezoidal()
-    # solution.simpson()
-    # solution.integral()
